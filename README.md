@@ -4,7 +4,7 @@ Yet another custom integration for GREE devices
 ## Why projects was created and why this integration is better then other?
 __Build-in GREE integration in Home Assistant often loose connectivity to devices.__
 
-GREE devices, make since 2022 have different (probably cheaper) Wi-Fi integration which loose some PING packets.
+GREE devices, make since 2022 have (probably different - cheaper) Wi-Fi integration which lose some PING packets.
    
 _This integration use written from the scratch Python library __greeclimateapi__ (https://github.com/matizk144/greeclimateapi/) which handle this issue_
 
