@@ -2,7 +2,7 @@
 Yet another custom integration for GREE devices
 
 ## Why projects was created and why this integration is better then other?
-__Build-in GREE integration in Home Assistant often loose connectivity to devices.__
+__Build-in GREE integration in Home Assistant often lose connectivity to devices.__
 
 GREE devices, make since 2022 have (probably different - cheaper) Wi-Fi integration which lose some PING packets.
    
