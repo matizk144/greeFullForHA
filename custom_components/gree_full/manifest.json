@@ -1,0 +1,15 @@
+{
+  "domain": "gree_full",
+  "name": "Gree Full",
+  "codeowners": ["@matizk144"],
+  "version": "0.1.0",
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://www.home-assistant.io/integrations/gree_full",
+  "integration_type": "hub",
+  "homekit": {},
+  "iot_class": "local_polling",
+  "requirements": ["greeclimateapi==0.2.0"],
+  "ssdp": [],
+  "zeroconf": []
+}

@@ -1,0 +1,8 @@
+FAN_MODE_AUTO = "Auto"
+FAN_MODE_LOW = "Low"
+FAN_MODE_MEDIUM_LOW = "Medium-Low"
+FAN_MODE_MEDIUM = "Medium"
+FAN_MODE_MEDIUM_HIGH = "Medium-High"
+FAN_MODE_HIGH = "High"
+FAN_MODE_TURBO = "Turbo"
+FAN_MODE_QUIET = "Quiet"
