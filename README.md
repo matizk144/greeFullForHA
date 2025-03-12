@@ -19,17 +19,22 @@ _This integration support all modes in Vertical Swing & Horizontal Swing. Beside
 
 # How to install
 1. Copy content from folder _custom_components_ into your Home Assistant instance
-2. Add entry in _configuration.yaml_ file with name and IP/hostname(s) like in example:
+2. Add entry in _configuration.yaml_ file with name and IP/hostname(s)
+3. Since GREE changed encryption _enc_ parameter is needed to set encryption. There is two possibilites:
+  - _ecb_ - for older HVACs which WIFI module is less that v1.21
+  - _gcm_ - for newer HVACS which WIFI module is above v1.21
+
+  If you have troubles with connection try another encryption. I don't have exacly specified from which version GCM encryption is used.
 
 ## Example
 ```
 gree_full:
-  - name: office_hvac
+  - name: biuro
     host: 10.0.4.104
-  - name: corridor_hvac
-    host: 10.0.4.175    
-  - name: bedroom_hvac
-    host: 10.0.4.225
+    enc: ecb
+  - name: salon
+    host: 10.0.4.107
+    enc: gcm
 ```
 
 # Which entites are added:

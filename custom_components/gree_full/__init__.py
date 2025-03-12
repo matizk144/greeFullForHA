@@ -1,5 +1,6 @@
 """The Gree Full integration."""
 from __future__ import annotations
+from typing import Final, Literal
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
@@ -7,9 +8,10 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.typing import ConfigType
 from homeassistant.const import CONF_HOST, CONF_NAME
 
-from .const import DOMAIN, CONF_CLIENT_API
+from .const import DOMAIN, CONF_CLIENT_API, ENCRYPTION_PARAM, ENCRYPTION_GCM, ENCRYPTION_ECB
 from .entities.greeClimate import GreeClimate
 from greeclimateapi.greeClimateApi import GreeClimateApi
+from greeclimateapi.enums import EncryptionType
 
 # TODO List the platforms that you want to support.
 # For your initial PR, limit it to 1 platform.
@@ -22,9 +24,25 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
     instances = list()
 
     for instance in config[DOMAIN]:
+        enc : Literal
+        encryption_type : EncryptionType
+
+        if not ENCRYPTION_PARAM in instance:
+            enc = ENCRYPTION_ECB
+        else:
+            enc = instance[ENCRYPTION_PARAM]
+
+        if enc == ENCRYPTION_ECB:
+            encryption_type = EncryptionType.aes_ecb
+        elif enc == ENCRYPTION_GCM:
+            encryption_type = EncryptionType.aes_gcm
+        else:
+            raise Exception("Invalid encryption type: " + enc)
+
+
         instances.append({
             CONF_NAME: instance[CONF_NAME],
-            CONF_CLIENT_API: GreeClimate(GreeClimateApi(instance[CONF_HOST]))
+            CONF_CLIENT_API: GreeClimate(GreeClimateApi(instance[CONF_HOST], encryption_type))
         })
 
 
