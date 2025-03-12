@@ -59,7 +59,11 @@ class GreeFullClimate(ClimateEntity):
         if not self._initialized:
             await self._gree_climate.async_initialize()
             self._initialized = True
-        await self._gree_climate.async_update()
+        self._logger.info("Updating device status")
+        try:
+            await self._gree_climate.async_update()
+        except Exception as e:
+            self._logger.error("Error during update device status: " + e.args)
         self._status = self._gree_climate.greeClimateApi.statusData
 
     @property

@@ -16,5 +16,7 @@ class GreeClimate:
 
     async def async_update(self):
         await self.semaphore.acquire()
-        await self.greeClimateApi.sync_status()
-        self.semaphore.release()
+        try:
+            await self.greeClimateApi.sync_status()
+        finally:
+            self.semaphore.release()
