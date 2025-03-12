@@ -29,10 +29,10 @@ _This integration support all modes in Vertical Swing & Horizontal Swing. Beside
 ## Example
 ```
 gree_full:
-  - name: biuro
+  - name: office_hvac
     host: 10.0.4.104
     enc: ecb
-  - name: salon
+  - name: corridor_hvac
     host: 10.0.4.107
     enc: gcm
 ```
